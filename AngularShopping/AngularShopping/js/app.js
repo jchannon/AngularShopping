@@ -1,7 +1,21 @@
-﻿'use strict';
+﻿(function () {
+    'use strict';
 
-angular.module('dataModule', []).
-    factory('shoppingItemsService', function () {
+    var app = angular.module('myCart', []).
+        config(function ($routeProvider) {
+            $routeProvider.
+                when('/', {
+                    controller: 'IndexController',
+                    templateUrl: '/templates/list.html'
+                }).
+                when('/:id', {
+                    controller: 'DetailController',
+                    templateUrl: '/templates/detail.html'
+                }).
+                otherwise({ redirectTo: '/' });
+        });
+
+    app.factory('shoppingItemsService', function () {
         var data = [
             {
                 "id": 1,
@@ -48,3 +62,39 @@ angular.module('dataModule', []).
             }
         };
     });
+
+    app.factory('basketService', function () {
+        return {
+            getCount: function () {
+                var basket = JSON.parse((localStorage.getItem('shoppingBasket') || '{ "items": [] }'));
+                var count = 0;
+                basket.items.forEach(function (element) {
+                    count += element.quantity;
+                });
+
+                return count;
+            },
+
+            addItem: function (item) {
+                var basket = JSON.parse((localStorage.getItem('shoppingBasket') || '{ "items": [] }'));
+
+                var itemStoredAlready = basket.items.filter(function (x) { return x.id === item.id; }).length === 1;
+
+                if (itemStoredAlready) {
+                    var basketItem = basket.items.filter(function (x) { return x.id === item.id; })[0];
+                    basketItem.quantity += parseInt(item.quantity, 10);
+                } else {
+
+                    var basketItem = {};
+                    basketItem.id = item.id;
+                    basketItem.title = item.title;
+                    basketItem.quantity = parseInt(item.quantity, 10);
+
+                    basket.items.push(basketItem);
+                }
+
+                localStorage.setItem('shoppingBasket', JSON.stringify(basket));
+            }
+        };
+    });
+})();

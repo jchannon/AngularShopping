@@ -1,14 +1,20 @@
-﻿function DetailController($scope, $routeParams, basketService, shoppingItemsService) {
+﻿(function () {
     'use strict';
 
-    $scope.item = shoppingItemsService.getItem($routeParams.id);
-    $scope.item.quantity = 1;
+    var app = angular.module('myCart');
 
-    $scope.item.basketCount = basketService.getCount();
-    
-    $scope.addItem = function () {
-        basketService.addItem($scope.item);
-    };
+    app.controller(
+        'DetailController',
+        function ($scope, $routeParams, basketService, shoppingItemsService) {
 
-}
+            $scope.item = shoppingItemsService.getItem($routeParams.id);
+            $scope.item.quantity = 1;
 
+            $scope.item.basketCount = basketService.getCount();
+
+            $scope.addItem = function () {
+                basketService.addItem($scope.item);
+            };
+        }
+    );
+})();

@@ -1,4 +1,6 @@
-﻿angular.module('basketModule', []).
+﻿'use strict';
+
+angular.module('basketModule', []).
     factory('basketService', function () {
         return {
             getCount: function () {

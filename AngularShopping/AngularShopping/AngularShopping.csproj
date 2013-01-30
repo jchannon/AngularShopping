@@ -45,7 +45,7 @@
     <Content Include="js\dataresource.js" />
     <Content Include="js\detail.js" />
     <Content Include="js\index.js" />
-    <Content Include="js\routing.js" />
+    <Content Include="js\app.js" />
     <Content Include="templates\detail.html" />
     <Content Include="templates\list.html" />
     <Content Include="Web.config" />
