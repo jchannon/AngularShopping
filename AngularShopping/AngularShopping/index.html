@@ -8,8 +8,8 @@
     <div id="container">
         <div id="header">
             <h1>The JSON Store</h1>
-            <div class="cart-info">
-                My Cart (<span class="cart-items">{{item.basketCount}}</span> items)
+            <div class="cart-info" ng-controller="CartController">
+                My Cart (<span class="cart-items">{{basketCount()}}</span> items)
             </div>
         </div>
         <div id="main" ng-view>
@@ -22,5 +22,6 @@
     <script src="js/basketinfo.js"></script>
     <script src="js/index.js"></script>
     <script src="js/detail.js"></script>
+    <script src="js/cartcontroller.js"></script>
 </body>
 </html>
