@@ -1,4 +1,4 @@
-﻿angular.module('myCart', ['dataModule']).
+﻿angular.module('myCart', ['dataModule', 'basketModule']).
   config(function ($routeProvider) {
       $routeProvider.
         when('/', { controller: IndexController, templateUrl: '/templates/list.html', resolve: {
@@ -18,8 +18,16 @@
                     deferred.resolve(shoppingItemsService.getItem($route.current.params.id));
 
                     return deferred.promise;
+                },
+                basketDetail : function($q, basketInfoService) {
+                    var deferred = $q.defer();
+
+                    deferred.resolve(basketInfoService);
+
+                    return deferred.promise;
                 }
             }
         }).
+      
         otherwise({ redirectTo: '/' });
   });

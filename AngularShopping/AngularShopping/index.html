@@ -8,6 +8,9 @@
     <div id="container">
         <div id="header">
             <h1>The JSON Store</h1>
+            <div class="cart-info">
+                My Cart (<span class="cart-items">{{item.basketCount}}</span> items)
+            </div>
         </div>
         <div id="main" ng-view>
         </div>
@@ -16,6 +19,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.4/angular-resource.js"></script>
     <script src="js/routing.js"></script>
     <script src="js/dataresource.js"></script>
+    <script src="js/basketinfo.js"></script>
     <script src="js/index.js"></script>
     <script src="js/detail.js"></script>
 </body>

@@ -40,6 +40,7 @@
   <ItemGroup>
     <Content Include="css\jsonstore.css" />
     <Content Include="index.html" />
+    <Content Include="js\basketinfo.js" />
     <Content Include="js\dataresource.js" />
     <Content Include="js\detail.js" />
     <Content Include="js\index.js" />
