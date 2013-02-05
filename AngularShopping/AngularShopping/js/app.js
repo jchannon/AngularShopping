@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    var app = angular.module('myCart', ['ui']).
+    var app = angular.module('myCart', []).
         config(function ($routeProvider) {
             $routeProvider.
                 when('/', {
